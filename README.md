@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>الرفق بالحيوان — تبرّعك ينقذ حياة</title>
+  <title>Animal Welfare — Your donation saves lives</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
@@ -21,22 +21,22 @@
     .menu-link:hover{color:#166534}
     .modal-enter{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
     @keyframes pop{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:none}}
-
-    /* ---- Fix: keep green on selected amount even when hovered ---- */
     .preset-btn{transition:background-color .2s,color .2s}
     .preset-btn:hover{background:#f9fafb}
     .preset-btn.selected{background:#16a34a;color:#fff;border-color:#16a34a}
     .preset-btn.selected:hover{background:#15803d;color:#fff}
+    /* Hide language toggle since site is English-only */
+    #langToggle{display:none}
   </style>
 </head>
 <body class="min-h-screen bg-white text-gray-900">
   <!-- ============== CONFIG ============== -->
   <script>
     const siteConfig = {
-      clinicName: "عيادة الرفق بالحيوان",
-      tagline: "تبرّعك اليوم ينقذ حياة غداً",
-      priceLocale: "en-US",   // أسعار بصيغة إنجليزية
-      currency: "USD",        // بالدولار
+      clinicName: "Animal Welfare Clinic",
+      tagline: "Your donation today saves a life tomorrow",
+      priceLocale: "en-US",
+      currency: "USD",
       brand: {
         logo: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=256&q=80&auto=format&fit=crop",
         primary: getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim(),
@@ -46,7 +46,7 @@
       contact: {
         phone: "+962795764229",
         email: "takee12345678900@gmail.com",
-        address: "عمّان، الأردن",
+        address: "Amman, Jordan",
         address_en: "Amman, Jordan",
         instagram: "https://instagram.com/its_taqi2003",
         facebook: "#",
@@ -64,15 +64,15 @@
         ]
       },
       tiers:[
-        {title:"لقاح طارئ",amount:5,desc:"تغطي جرعة لقاح أو دواء أساسي."},
-        {title:"وجبة وعلاج",amount:15,desc:"تأمين وجبة مغذية مع علاج بسيط."},
-        {title:"جراحة إنقاذ",amount:50,desc:"مساهمة فعّالة في عملية منقذة."}
+        {title:"Emergency Vaccine",amount:5,desc:"Covers a vaccine dose or basic medicine."},
+        {title:"Meal & Treatment",amount:15,desc:"Provides a nutritious meal with simple treatment."},
+        {title:"Life-saving Surgery",amount:50,desc:"A meaningful share in a life-saving operation."}
       ],
       money(v){try{return new Intl.NumberFormat(this.priceLocale,{style:'currency',currency:this.currency,maximumFractionDigits:0}).format(v)}catch(e){return "$"+v}}
     };
   </script>
 
-  <!-- ============== I18N ============== -->
+  <!-- ============== I18N (English only) ============== -->
   <script>
     const i18n = {
       en: {
@@ -93,7 +93,7 @@
         aboutLis: [
           '✔️ Instant forwarding to the clinic’s links (Visa/Stripe/Bank).',
           '✔️ Customizable logo, colors, and content in minutes.',
-          '✔️ Arabic (RTL) support and a smooth mobile experience.'
+          '✔️ Arabic support (RTL) and a smooth mobile experience.'
         ],
         donateH2: 'Choose your contribution',
         donateP: 'Flexible donation plans—you can also set a custom amount.',
@@ -122,66 +122,9 @@
         ibanCopyFallback: 'Copy failed. Please copy the IBAN manually.',
         alternative: 'Alternative: Bank transfer to IBAN:',
         tierBtn: 'Donate this amount',
-        tiersTr: {
-          'لقاح طارئ': 'Emergency Vaccine',
-          'وجبة وعلاج': 'Meal & Treatment',
-          'جراحة إنقاذ': 'Life-saving Surgery',
-          'تغطي جرعة لقاح أو دواء أساسي.': 'Covers a vaccine dose or basic medicine.',
-          'تأمين وجبة مغذية مع علاج بسيط.': 'Provides a nutritious meal with simple treatment.',
-          'مساهمة فعّالة في عملية منقذة.': 'A meaningful share in a life-saving operation.'
-        }
-      },
-      ar: {
-        dir: 'rtl', lang: 'ar',
-        clinicName: 'عيادة الرفق بالحيوان',
-        tagline: 'تبرّعك اليوم ينقذ حياة غداً',
-        menu: ['عنّا','التبرع','تواصل'],
-        heroP: 'كل تبرّع—مهما كان حجمه—يمنح فرصة حياة جديدة لقطةٍ أو كلبٍ ينتظر العلاج والرعاية.',
-        ctaDonate: 'تبرّع الآن',
-        ctaLearn: 'تعرّف أكثر',
-        features: ['شفافية عالية','طرق دفع آمنة','أثر فوري'],
-        quickTitle: '❤️ تبرّع سريع',
-        quickBtn: 'ادفع الآن',
-        quickNote: 'سيتم توجيهك لبوابة الدفع الآمنة.',
-        quickAmountLabel: 'المبلغ',
-        aboutH2: 'لماذا هذا الموقع؟',
-        aboutP: 'كثير من العيادات تتحمّل تكاليف علاج الحيوانات التي تُترك على أبوابها. هذا الموقع يجعل دعمك سهلاً ومباشراً عبر بوابات دفع آمنة وتقارير شفافة.',
-        aboutLis: [
-          '✔️ تحويل فوري لروابط العيادة (Visa/Stripe/حساب بنكي).',
-          '✔️ قابل للتخصيص بالشعار والألوان والمحتوى خلال دقائق.',
-          '✔️ يدعم العربية (RTL) وتجربة استخدام سلسة على الجوال.'
-        ],
-        donateH2: 'اختر مساهمتك',
-        donateP: 'خطط تبرّع مرنة—يمكنك أيضاً تحديد مبلغ مخصص.',
-        customH: 'أدخل مبلغاً مخصصاً',
-        amountLabel: 'المبلغ',
-        customPay: 'ادفع الآن',
-        galleryH2: 'صور من حالاتنا',
-        contactH2: 'تواصل معنا',
-        contactP: 'نسعد بأسئلتك واستفساراتك حول التبرعات أو التطوع.',
-        instagram: 'انستغرام',
-        footerRights: 'جميع الحقوق محفوظة',
-        footerBadge: '🛡️ منصة تبرعات مستقلة — روابط الدفع تعود مباشرةً للعيادة',
-        modalTitle: '❤️ إتمام التبرع',
-        modalChoose: 'اختر الطريقة المناسبة: Visa أو التحويل عبر CliQ أو التحويل البنكي (IBAN).',
-        modalAgree: 'أوافق على الشروط وسياسة الخصوصية.',
-        more: 'المزيد',
-        payPaypal: 'ادفع عبر Visa ↗',
-        payCliq: 'تحويل عبر CliQ',
-        payIban: 'تحويل بنكي (IBAN)',
-        cliqTitle: 'التحويل عبر CliQ',
-        cliqP: 'افتح تطبيق البنك ← CliQ ← إرسال ← أدخل المعرّف التالي:',
-        copy: 'نسخ', copied: 'تم النسخ ✔',
-        cliqCopyFallback: 'تعذّر النسخ، انسخ المعرّف يدويًا: TAQY123',
-        ibanTitle: 'التحويل البنكي (IBAN)',
-        ibanP: 'انسخ رقم الـIBAN ثم حوّل من تطبيق البنك:',
-        ibanCopyFallback: 'تعذّر النسخ، انسخ الـIBAN يدويًا.',
-        alternative: 'بديل: تحويل بنكي إلى IBAN:',
-        tierBtn: 'تبرّع بهذا المبلغ',
-        tiersTr: {}
       }
     };
-    let currentLang = 'ar';
+    let currentLang = 'en';
   </script>
 
   <!-- =================== NAVBAR =================== -->
@@ -189,16 +132,16 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <img id="logo" class="h-9 w-9 rounded-xl object-cover rtl-shadow" alt="logo">
-        <span id="brandName" class="font-extrabold tracking-tight text-lg sm:text-xl"></span>
+        <span id="brandName" class="font-extrabold tracking-tight text-lg sm:text-xl">Animal Welfare Clinic</span>
       </div>
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-        <a href="#about" class="menu-link transition">عنّا</a>
-        <a href="#donate" class="menu-link transition">التبرع</a>
-        <a href="#contact" class="menu-link transition">تواصل</a>
+        <a href="#about" class="menu-link transition">About</a>
+        <a href="#donate" class="menu-link transition">Donate</a>
+        <a href="#contact" class="menu-link transition">Contact</a>
       </nav>
       <div class="flex items-center gap-2">
         <button id="langToggle" class="px-3 py-2 rounded-2xl border text-sm font-semibold">EN</button>
-        <button id="donateTop" class="btn-primary px-4 py-2 rounded-2xl rtl-shadow text-sm font-semibold">تبرّع الآن</button>
+        <button id="donateTop" class="btn-primary px-4 py-2 rounded-2xl rtl-shadow text-sm font-semibold">Donate Now</button>
       </div>
     </div>
   </header>
@@ -215,32 +158,32 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div class="grid lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h1 id="tagline" class="fade-up text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight"></h1>
-            <p class="fade-up mt-4 text-lg text-gray-600" id="heroP">كل تبرّع—مهما كان حجمه—يمنح فرصة حياة جديدة لقطةٍ أو كلبٍ ينتظر العلاج والرعاية.</p>
+            <h1 id="tagline" class="fade-up text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Your donation today saves a life tomorrow</h1>
+            <p class="fade-up mt-4 text-lg text-gray-600" id="heroP">Every donation—no matter the size—gives a new chance of life to a cat or dog awaiting treatment and care.</p>
             <div class="fade-up mt-6 flex flex-wrap gap-3">
               <button id="donateHero" class="btn-primary px-5 py-3 rounded-2xl text-base font-semibold flex items-center gap-2">
-                <span id="donateHeroTxt">تبرّع الآن</span>
+                <span id="donateHeroTxt">Donate Now</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
               </button>
-              <a id="learnMoreLink" href="#about" class="inline-flex items-center gap-2 font-semibold hover:opacity-80">تعرّف أكثر</a>
+              <a id="learnMoreLink" href="#about" class="inline-flex items-center gap-2 font-semibold hover:opacity-80">Learn more</a>
             </div>
             <div class="fade-up flex items-center gap-6 text-sm text-gray-600 pt-6" id="featuresRow">
-              <div class="flex items-center gap-2">🔒 شفافية عالية</div>
-              <div class="flex items-center gap-2">💳 طرق دفع آمنة</div>
-              <div class="flex items-center gap-2">🐾 أثر فوري</div>
+              <div class="flex items-center gap-2">🔒 High transparency</div>
+              <div class="flex items-center gap-2">💳 Secure payments</div>
+              <div class="flex items-center gap-2">🐾 Immediate impact</div>
             </div>
           </div>
           <div>
             <div class="fade-up max-w-md mx-auto bg-white rounded-2xl border rtl-shadow">
-              <div id="quickTitle" class="p-4 border-b font-bold flex items-center gap-2">❤️ تبرّع سريع</div>
+              <div id="quickTitle" class="p-4 border-b font-bold flex items-center gap-2">❤️ Quick Donate</div>
               <div class="p-4 space-y-4">
                 <div class="grid grid-cols-4 gap-2" id="presetBtns"></div>
                 <div>
-                  <label class="text-sm" id="quickAmountLabel">المبلغ (<span id="currencyQuick"></span>)</label>
+                  <label class="text-sm" id="quickAmountLabel">Amount (<span id="currencyQuick"></span>)</label>
                   <input id="quickCustomAmount" type="number" min="1" class="mt-1 w-full rounded-xl border px-3 py-2" />
                 </div>
-                <button id="donateQuick" class="btn-primary w-full rounded-xl py-2 font-semibold">ادفع الآن</button>
-                <p id="quickNote" class="text-xs text-gray-500">سيتم توجيهك لبوابة الدفع الآمنة.</p>
+                <button id="donateQuick" class="btn-primary w-full rounded-xl py-2 font-semibold">Pay now</button>
+                <p id="quickNote" class="text-xs text-gray-500">You will be redirected to a secure payment gateway.</p>
               </div>
             </div>
           </div>
@@ -252,14 +195,14 @@
     <section id="about" class="py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
         <div class="order-2 lg:order-1">
-          <h2 class="fade-up text-3xl font-extrabold" id="aboutH2">لماذا هذا الموقع؟</h2>
+          <h2 class="fade-up text-3xl font-extrabold" id="aboutH2">Why this site?</h2>
           <p class="fade-up text-gray-600 mt-4 leading-relaxed" id="aboutP">
-            كثير من العيادات تتحمّل تكاليف علاج الحيوانات التي تُترك على أبوابها. هذا الموقع يجعل دعمك سهلاً ومباشراً عبر بوابات دفع آمنة وتقارير شفافة.
+            Many clinics cover the treatment costs of animals left at their doors. This site makes your support easy and direct via secure gateways and transparent reports.
           </p>
           <ul class="fade-up mt-6 space-y-3 text-gray-700" id="aboutList">
-            <li>✔️ تحويل فوري لروابط العيادة (Visa/Stripe/حساب بنكي).</li>
-            <li>✔️ قابل للتخصيص بالشعار والألوان والمحتوى خلال دقائق.</li>
-            <li>✔️ يدعم العربية (RTL) وتجربة استخدام سلسة على الجوال.</li>
+            <li>✔️ Instant forwarding to the clinic’s links (Visa/Stripe/Bank).</li>
+            <li>✔️ Customizable logo, colors, and content in minutes.</li>
+            <li>✔️ Arabic support (RTL) and a smooth mobile experience.</li>
           </ul>
         </div>
         <div class="order-1 lg:order-2 relative">
@@ -273,20 +216,20 @@
     <section id="donate" class="py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">
-          <h2 id="donateH2" class="fade-up text-3xl font-extrabold">اختر مساهمتك</h2>
-          <p id="donateP" class="fade-up text-gray-600 mt-2">خطط تبرّع مرنة—يمكنك أيضاً تحديد مبلغ مخصص.</p>
+          <h2 id="donateH2" class="fade-up text-3xl font-extrabold">Choose your contribution</h2>
+          <p id="donateP" class="fade-up text-gray-600 mt-2">Flexible donation plans—you can also set a custom amount.</p>
         </div>
         <div id="tiers" class="grid md:grid-cols-3 gap-6"></div>
         <div class="fade-up mt-8 bg-white rounded-2xl border rtl-shadow">
-          <div id="customH" class="p-4 border-b font-bold">أدخل مبلغاً مخصصاً</div>
+          <div id="customH" class="p-4 border-b font-bold">Enter a custom amount</div>
           <div class="p-4 grid md:grid-cols-1 gap-4">
             <div>
-              <label class="text-sm" id="amountLabel">المبلغ (<span id="currency2"></span>)</label>
+              <label class="text-sm" id="amountLabel">Amount (<span id="currency2"></span>)</label>
               <input id="customAmount" type="number" min="1" class="mt-1 w-full rounded-xl border px-3 py-2" />
             </div>
           </div>
           <div class="p-4 flex flex-wrap gap-2">
-            <button id="donateCustom" class="btn-primary rounded-xl px-4 py-2 font-semibold">ادفع الآن</button>
+            <button id="donateCustom" class="btn-primary rounded-xl px-4 py-2 font-semibold">Pay now</button>
           </div>
         </div>
       </div>
@@ -295,7 +238,7 @@
     <!-- GALLERY -->
     <section class="py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 id="galleryH2" class="fade-up text-3xl font-extrabold mb-8 text-center">صور من حالاتنا</h2>
+        <h2 id="galleryH2" class="fade-up text-3xl font-extrabold mb-8 text-center">Photos from our cases</h2>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <img class="fade-up h-48 w-full object-cover rounded-2xl border" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop" alt="gallery-1">
           <img class="fade-up h-48 w-full object-cover rounded-2xl border" src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=1200&auto=format&fit=crop" alt="gallery-2">
@@ -309,15 +252,15 @@
   <!-- CONTACT -->
   <section id="contact" class="py-16 bg-green-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="fade-up text-3xl font-extrabold" id="contactH2">تواصل معنا</h2>
-      <p class="fade-up text-gray-600 mt-2" id="contactP">نسعد بأسئلتك واستفساراتك حول التبرعات أو التطوع.</p>
+      <h2 class="fade-up text-3xl font-extrabold" id="contactH2">Contact us</h2>
+      <p class="fade-up text-gray-600 mt-2" id="contactP">We are happy to answer your questions about donations or volunteering.</p>
       <div class="fade-up mt-6 space-y-3 text-gray-700">
         <div>📞 <span id="phone"></span></div>
         <div>✉️ <span id="email"></span></div>
         <div>📍 <span id="address"></span></div>
       </div>
       <div class="fade-up flex gap-3 mt-6">
-        <a id="ig" href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border hover:bg-gray-50">انستغرام</a>
+        <a id="ig" href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border hover:bg-gray-50">Instagram</a>
       </div>
     </div>
   </section>
@@ -328,11 +271,11 @@
       <div class="flex items-center gap-3">
         <img id="logo2" class="h-8 w-8 rounded-lg object-cover" alt="logo"/>
         <div>
-          <div id="brandName2" class="font-bold"></div>
-          <div class="text-xs text-gray-500">© <span id="year"></span> <span id="footerRights">جميع الحقوق محفوظة</span></div>
+          <div id="brandName2" class="font-bold">Animal Welfare Clinic</div>
+          <div class="text-xs text-gray-500">© <span id="year"></span> <span id="footerRights">All rights reserved</span></div>
         </div>
       </div>
-      <div id="footerBadge" class="text-sm text-gray-600 flex items-center gap-2">🛡️ منصة تبرعات مستقلة — روابط الدفع تعود مباشرةً للعيادة</div>
+      <div id="footerBadge" class="text-sm text-gray-600 flex items-center gap-2">🛡️ Independent donation platform — payment links go directly to the clinic</div>
     </div>
   </footer>
 
@@ -340,76 +283,48 @@
   <div id="donateModal" class="hidden fixed inset-0 z-50 bg-black/40 items-center justify-center p-4">
     <div class="modal-enter w-full max-w-lg rounded-2xl bg-white shadow-2xl overflow-hidden">
       <div class="flex items-center justify-between p-4 border-b">
-        <div id="modalTitle" class="font-bold flex items-center gap-2">❤️ إتمام التبرع</div>
+        <div id="modalTitle" class="font-bold flex items-center gap-2">❤️ Complete Donation</div>
         <button id="closeModal" class="p-1 rounded hover:bg-gray-100">✖️</button>
       </div>
       <div class="p-5 space-y-4">
         <div class="text-xl font-extrabold text-green-700" id="modalAmount">0</div>
-        <p class="text-gray-600" id="modalChooseTxt">اختر الطريقة المناسبة: Visa أو التحويل عبر CliQ أو التحويل البنكي (IBAN).</p>
+        <p class="text-gray-600" id="modalChooseTxt">Choose a method: Visa, transfer via CliQ, or bank transfer (IBAN).</p>
         <label class="flex items-center gap-2 text-sm flex-wrap">
           <input type="checkbox" id="agree" checked>
-          <span id="agreeTxt">أوافق على الشروط وسياسة الخصوصية.</span>
-          <a id="termsLink" href="#" class="text-blue-600 underline ms-2">المزيد</a>
+          <span id="agreeTxt">I agree to the terms and privacy policy.</span>
+          <a id="termsLink" href="#" class="text-blue-600 underline ms-2">More</a>
         </label>
         <div class="grid sm:grid-cols-3 gap-3">
-          <a id="payPaypal" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border font-semibold hover:bg-gray-50">ادفع عبر Visa ↗</a>
-          <button id="payCliq" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border font-semibold hover:bg-gray-50">تحويل عبر CliQ</button>
-          <button id="payIban" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border font-semibold hover:bg-gray-50">تحويل بنكي (IBAN)</button>
+          <a id="payPaypal" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border font-semibold hover:bg-gray-50">Pay via Visa ↗</a>
+          <button id="payCliq" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border font-semibold hover:bg-gray-50">Transfer via CliQ</button>
+          <button id="payIban" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border font-semibold hover:bg-gray-50">Bank transfer (IBAN)</button>
         </div>
         <div id="cliqBox" class="hidden rounded-2xl border p-4 bg-green-50">
-          <div id="cliqTitle" class="font-bold mb-1">التحويل عبر CliQ</div>
-          <p id="cliqP" class="text-sm text-gray-700">افتح تطبيق البنك ← CliQ ← إرسال ← أدخل المعرّف التالي:</p>
+          <div id="cliqTitle" class="font-bold mb-1">Transfer via CliQ</div>
+          <p id="cliqP" class="text-sm text-gray-700">Open your banking app → CliQ → Send → Enter the following identifier:</p>
           <div class="mt-2 flex items-center gap-2">
             <code id="cliqId" class="px-3 py-2 rounded-lg bg-white border rtl-shadow font-mono">TAQY123</code>
-            <button id="copyCliq" class="btn-primary rounded-lg px-3 py-2 text-sm">نسخ</button>
+            <button id="copyCliq" class="btn-primary rounded-lg px-3 py-2 text-sm">Copy</button>
           </div>
         </div>
         <div id="ibanBox" class="hidden rounded-2xl border p-4 bg-blue-50">
-          <div id="ibanTitle" class="font-bold mb-1">التحويل البنكي (IBAN)</div>
-          <p id="ibanP" class="text-sm text-gray-700">انسخ رقم الـIBAN ثم حوّل من تطبيق البنك:</p>
+          <div id="ibanTitle" class="font-bold mb-1">Bank transfer (IBAN)</div>
+          <p id="ibanP" class="text-sm text-gray-700">Copy the IBAN, then transfer from your banking app:</p>
           <div class="mt-2 flex items-center gap-2">
             <code id="ibanCode" class="px-3 py-2 rounded-lg bg-white border rtl-shadow font-mono">JO69UBSI1010000010160371415501</code>
-            <button id="copyIban" class="btn-primary rounded-lg px-3 py-2 text-sm">نسخ</button>
+            <button id="copyIban" class="btn-primary rounded-lg px-3 py-2 text-sm">Copy</button>
           </div>
         </div>
-        <div id="altLine" class="text-xs text-gray-500">بديل: تحويل بنكي إلى IBAN: <span class="font-mono" id="iban"></span></div>
+        <div id="altLine" class="text-xs text-gray-500">Alternative: Bank transfer to IBAN: <span class="font-mono" id="iban"></span></div>
       </div>
     </div>
   </div>
 
-  <!-- TERMS "PAGE" (same file) -->
+  <!-- TERMS "PAGE" (English only) -->
   <main id="pageTerms" class="hidden max-w-3xl mx-auto px-4 py-10">
-    <a id="backLink" href="./" class="text-blue-600 underline text-sm">عودة</a>
-    <h1 id="pageTitle" class="text-3xl font-extrabold mt-4 mb-6">الشروط وسياسة الخصوصية</h1>
-    <section id="terms_ar" class="space-y-6">
-      <p class="text-gray-700">نثمّن ثقتك. باستخدامك لموقع التبرعات هذا، فإنك توافق على الشروط أدناه وسياسة الخصوصية.</p>
-      <h2 class="text-xl font-bold">١) الغرض من المنصّة</h2>
-      <p class="text-gray-700">هذه المنصّة توفّر وسيلة سهلة وآمنة لإرسال التبرعات مباشرةً إلى العيادة المعلنة. روابط الدفع تؤدي إلى مزوّدين خارجيين (مثل PayPal أو بوابات البنوك).</p>
-      <h2 class="text-xl font-bold">٢) طرق الدفع</h2>
-      <ul class="list-disc ps-6 text-gray-700">
-        <li>قد تُحوَّل عمليات الدفع إلى أطراف ثالثة موثوقة (PayPal، CliQ، أو التحويل البنكي).</li>
-        <li>قد تُطبّق رسوم من مزوّد الدفع أو البنك.</li>
-      </ul>
-      <h2 class="text-xl font-bold">٣) الشفافية والإيصالات</h2>
-      <ul class="list-disc ps-6 text-gray-700">
-        <li>تسجَّل التبرعات لدى مزوّد الدفع. يُمكن للمتبرّع الاحتفاظ بإيصال الدفع المرسل من المزوّد.</li>
-        <li>للاستفسارات حول تخصيص التبرعات أو التقارير، يُرجى التواصل مع العيادة على البريد المذكور في الموقع.</li>
-      </ul>
-      <h2 class="text-xl font-bold">٤) سياسة الخصوصية</h2>
-      <ul class="list-disc ps-6 text-gray-700">
-        <li>لا نجمع بيانات شخصية أكثر مما يلزم لإتمام التبرع والتواصل.</li>
-        <li>تُعالَج بيانات بطاقتك لدى مزوّد الدفع الخارجي ولا تُخزَّن في هذه المنصّة.</li>
-        <li>قد نحتفظ ببيانات الاتصال الأساسية (مثل البريد الإلكتروني) للمتابعة على نحو يتوافق مع القوانين المعمول بها.</li>
-      </ul>
-      <h2 class="text-xl font-bold">٥) الاسترجاع وإلغاء العمليات</h2>
-      <p class="text-gray-700">التبرعات تُعد مساهمة طوعية. طلبات الاسترجاع تُقيّم حالةً بحالة بالتنسيق مع مزوّد الدفع والقوانين المحلية.</p>
-      <h2 class="text-xl font-bold">٦) إخلاء المسؤولية</h2>
-      <p class="text-gray-700">تُقدَّم هذه المنصّة كما هي. نحن غير مسؤولين عن أي أعطال تقنية لدى مزوّدي الدفع أو البنوك.</p>
-      <h2 class="text-xl font-bold">٧) تواصل</h2>
-      <p class="text-gray-700">لأي أسئلة، يُرجى التواصل عبر البريد المذكور في صفحة "تواصل معنا" بالموقع.</p>
-      <p class="text-xs text-gray-500">آخر تحديث: 12 أيلول/سبتمبر 2025</p>
-    </section>
-    <section id="terms_en" class="space-y-6 hidden" lang="en" dir="ltr">
+    <a id="backLink" href="./" class="text-blue-600 underline text-sm">Back</a>
+    <h1 id="pageTitle" class="text-3xl font-extrabold mt-4 mb-6">Terms & Privacy Policy</h1>
+    <section id="terms_en" class="space-y-6" lang="en" dir="ltr">
       <p class="text-gray-700">We value your trust. By using this donation site, you agree to the terms and privacy policy below.</p>
       <h2 class="text-xl font-bold">1) Purpose of the Platform</h2>
       <p class="text-gray-700">This platform provides a simple, secure way to send donations directly to the listed clinic. Payment links lead to external providers (e.g., PayPal or banking gateways).</p>
@@ -460,7 +375,7 @@
     // contacts
     phone.textContent = siteConfig.contact.phone;
     email.textContent = siteConfig.contact.email;
-    address.textContent = siteConfig.contact.address;
+    address.textContent = siteConfig.contact.address_en || siteConfig.contact.address;
     ig.href = siteConfig.contact.instagram;
 
     // currency labels
@@ -523,11 +438,9 @@
       if (typeof io !== 'undefined' && io) $$('#tiers .fade-up').forEach(el=>io.observe(el));
     }
 
-    // choose PayPal NCP base URL by language
+    // English PayPal NCP base URL
     function payBaseUrl(){
-      return (currentLang === 'en')
-        ? "https://www.paypal.com/ncp/payment/YRBDV24CBS3QG" // EN
-        : "https://www.paypal.com/ncp/payment/5AG6KYD9PHTPJ"; // AR
+      return "https://www.paypal.com/ncp/payment/YRBDV24CBS3QG";
     }
 
     // donate modal
@@ -616,10 +529,10 @@
     const io = new IntersectionObserver((entries)=>{ entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in') }) },{threshold:.15});
     $$('.fade-up').forEach(el=>io.observe(el));
 
-    // setLocale
+    // setLocale (English only)
     function setLocale(lang){
-      const t = i18n[lang];
-      currentLang = lang;
+      const t = i18n.en; // force English
+      currentLang = 'en';
 
       document.documentElement.dir = t.dir;
       document.documentElement.lang = t.lang;
@@ -655,7 +568,7 @@
       $('#donateP').textContent = t.donateP;
 
       // Tiers
-      const mapTierText = s => (t.tiersTr[s] ?? s);
+      const mapTierText = s => s;
       renderTiers(mapTierText);
 
       // Custom amount block
@@ -674,8 +587,7 @@
       $('#contactH2').textContent = t.contactH2;
       $('#contactP').textContent = t.contactP;
       $('#ig').textContent = t.instagram;
-      address.textContent = (lang==='en' ? (siteConfig.contact.address_en || siteConfig.contact.address)
-                                         : siteConfig.contact.address);
+      address.textContent = siteConfig.contact.address_en || siteConfig.contact.address;
 
       // Footer
       $('#footerRights').textContent = t.footerRights;
@@ -703,35 +615,15 @@
 
       // Gallery heading
       $('#galleryH2').textContent = t.galleryH2;
-
-      // Lang toggle label
-      $('#langToggle').textContent = (lang==='en'?'AR':'EN');
-
-      // If on terms page, switch its content & back link
-      const params = new URLSearchParams(location.search);
-      if ((params.get('page')||'').toLowerCase()==='terms'){
-        const tAr = $('#terms_ar');
-        const tEn = $('#terms_en');
-        if (lang==='en'){
-          $('#pageTitle').textContent = 'Terms & Privacy Policy';
-          $('#backLink').textContent = 'Back';
-          tEn.classList.remove('hidden'); tAr.classList.add('hidden');
-        } else {
-          $('#pageTitle').textContent = 'الشروط وسياسة الخصوصية';
-          $('#backLink').textContent = 'عودة';
-          tAr.classList.remove('hidden'); tEn.classList.add('hidden');
-        }
-      }
     }
 
     // Router
     function getParams(){
       const p = new URLSearchParams(location.search);
-      return { page: (p.get('page')||'').toLowerCase(), lang: (p.get('lang')||'').toLowerCase() };
+      return { page: (p.get('page')||'').toLowerCase(), lang: 'en' };
     }
-    function goToTerms(lang){
-      const l = (lang||currentLang||'ar').toLowerCase();
-      const url = `${location.pathname}?page=terms&lang=${l}${location.hash||''}`;
+    function goToTerms(){
+      const url = `${location.pathname}?page=terms&lang=en${location.hash||''}`;
       location.assign(url);
     }
     function goHome(){ location.assign(`${location.pathname}${location.hash||''}`); }
@@ -739,11 +631,9 @@
     document.getElementById('backLink').addEventListener('click', (e)=>{ e.preventDefault(); goHome(); });
 
     function route(){
-      const {page, lang} = getParams();
+      const {page} = getParams();
       const home = $('#pageHome');
       const terms = $('#pageTerms');
-      const tAr = $('#terms_ar');
-      const tEn = $('#terms_en');
 
       if (page === 'terms'){
         closeModalFn();
@@ -752,44 +642,23 @@
         $('footer').classList.add('hidden');
         terms.classList.remove('hidden');
 
-        const wantedLang = (lang==='en'?'en':'ar');
-        setLocale(wantedLang);
-        if (wantedLang === 'en'){
-          $('#pageTitle').textContent = 'Terms & Privacy Policy';
-          $('#backLink').textContent = 'Back';
-          tEn.classList.remove('hidden'); tAr.classList.add('hidden');
-        } else {
-          $('#pageTitle').textContent = 'الشروط وسياسة الخصوصية';
-          $('#backLink').textContent = 'عودة';
-          tAr.classList.remove('hidden'); tEn.classList.add('hidden');
-        }
-        document.title = (wantedLang==='en'?'Terms & Privacy — Animal Welfare Clinic':'الشروط والخصوصية — عيادة الرفق بالحيوان');
+        setLocale('en');
+        $('#pageTitle').textContent = 'Terms & Privacy Policy';
+        $('#backLink').textContent = 'Back';
+        document.title = 'Terms & Privacy — Animal Welfare Clinic';
       } else {
         home.classList.remove('hidden');
         $('#contact').classList.remove('hidden');
         $('footer').classList.remove('hidden');
         terms.classList.add('hidden');
-        document.title = (currentLang==='en'?'Animal Welfare — Your donation saves lives':'الرفق بالحيوان — تبرّعك ينقذ حياة');
+        document.title = 'Animal Welfare — Your donation saves lives';
       }
     }
     window.addEventListener('popstate', route);
     window.addEventListener('DOMContentLoaded', route);
 
-    // language toggle
-    $('#langToggle').addEventListener('click', ()=>{
-      const p = new URLSearchParams(location.search);
-      const onTerms = (p.get('page')||'').toLowerCase()==='terms';
-      const next = (currentLang==='ar'?'en':'ar');
-      if (onTerms){
-        p.set('page','terms'); p.set('lang', next);
-        location.assign(`${location.pathname}?${p.toString()}${location.hash||''}`);
-      } else {
-        setLocale(next);
-      }
-    });
-
     // INIT
-    setLocale('ar');
+    setLocale('en');
     const currencyQuickInit = $('#currencyQuick');
     if(currencyQuickInit) currencyQuickInit.textContent = siteConfig.currency;
     (function initRoute(){
